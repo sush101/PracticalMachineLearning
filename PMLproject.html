@@ -1,51 +1,59 @@
-Predict the manner of exercise
-Rathod Sushma
+</head>
 
-Wednesday, June 18, 2014
+<body>
+<p>I) AIM :</p>
 
-AIM :
-The aim of the project is to “predict the manner in which people did exercise”.
+<p>The aim of the project is to &ldquo;predict the manner in which people did exercise&rdquo;.</p>
 
-Data :
-The training data of this project is available here https://d396qusza40orc.cloudfront.net/predmachlearn/pml-training.csv. The test data is available here https://d396qusza40orc.cloudfront.net/predmachlearn/pml-testing.csv. The data source for this project comes from here http://groupware.les.inf.puc-rio.br/har.
+<p>II) Data :</p>
 
-The predictor variable is “classe” and there are 158 exploratory variables. Using one or more predictor variables we got to build a model which predicts the manner in which they did exercise.
+<p>The training data of this project is available here <a href="https://d396qusza40orc.cloudfront.net/predmachlearn/pml-training.csv">https://d396qusza40orc.cloudfront.net/predmachlearn/pml-training.csv</a>. 
+The test data is available here <a href="https://d396qusza40orc.cloudfront.net/predmachlearn/pml-testing.csv">https://d396qusza40orc.cloudfront.net/predmachlearn/pml-testing.csv</a>.
+The data source for this project comes from here <a href="http://groupware.les.inf.puc-rio.br/har">http://groupware.les.inf.puc-rio.br/har</a>.</p>
 
-Data Pre-Processing :
-The following are the preprocessing steps followed for this analysis :
+<p>The predictor variable is &ldquo;classe&rdquo; and there are 158 exploratory variables.
+Using one or more predictor variables we got to build a model which predicts the manner in which they did exercise. </p>
 
-All the columns which contained “NA’s” and missing values have been removed.
-The column namely “user_name” is removed as it is not relavent predictor for the current analysis. In the same way columns with “timestamp” and “new_window” were removed.
-Finally a check for number of missing values was done which resulted in “Zero” missing values, which is a pretty good start for the analysis !
-Exploratory Analysis :
-Descriptive Statistics :
+<p>III) Data Pre-Processing :</p>
 
-Checking for missing data :
+<p>The following are the preprocessing steps followed for this analysis :</p>
 
-sum(is.na(train))
-## [1] 0
-Exploratory Plots :
-The following graph describes the distribution of No.of windows
+<ul>
+<li>1. All the columns which contained &ldquo;NA&#39;s&rdquo; and missing values have been removed. </li>
+<li>2. The column namely &ldquo;user_name&rdquo; is removed as it is not relavent predictor for the current analysis. In the same way columns with &ldquo;timestamp&rdquo; and &ldquo;new_window&rdquo; were removed.</li>
+<li>3. Finally a check for number of missing values was done which resulted in &ldquo;Zero&rdquo; missing values, which is a pretty good start for the analysis !</li>
+</ul>
 
-plot(train$classe,train$num_window,main="Distribution of no of windows wrt Class",xlab="Classe",ylab="No.of Windows")
-plot of chunk unnamed-chunk-3
+<p>IV) Exploratory Analysis :</p>
 
-Statistical Prediction/Modelling :
-Splitting the data : The actual training data set was randomly splitted (by setting seeds) into three subsets in a ratio of 60, 20 and 20 percentages which were called as train,test and evaluation sets respectively. The model is built using train data set. For testing the accuracy of the model “test” data was used and a best model amongst was selected and finally was used on “evaluation” data.
+<p>a) Descriptive Statistics :</p>
 
-Building decision tree model:
+<p>b) Checking for missing data :</p>
 
-Fitting a tree model using three different types of trees,.i.e by using “rpart”, “C5.0”,“C4.5” on training data.
+<pre><code class="r">sum(is.na(train))
+</code></pre>
 
-Testing the model :
-Here we are going to see which is the more accurate model among the three different types of trees.
+<pre><code>## [1] 0
+</code></pre>
 
-## Loading required package: lattice
-## Loading required package: ggplot2
-# Classification matrix for "Cart Model"
+<p>V) Statistical Prediction/Modelling :</p>
+
+<p>a) Splitting the data :
+The actual training data set was randomly splitted (by setting seeds) into three subsets in a ratio of 60, 20 and 20 percentages which were called as train,test and evaluation sets respectively. The model is built using train data set. For testing the accuracy of the model &ldquo;test&rdquo; data was used and a best model amongst was selected and finally was used on &ldquo;evaluation&rdquo; data. </p>
+
+<p>b) Building decision tree model:</p>
+
+<p>Fitting a tree model using three different types of trees,.i.e by using &ldquo;rpart&rdquo;, &ldquo;C5.0&rdquo;,&ldquo;C4.5&rdquo; on training data.</p>
+
+<p>c) Testing the model :</p>
+
+<p>Here we are going to see which is the more accurate model among the three different types of trees. </p>
+
+<pre><code class="r"># Classification matrix for &quot;Cart Model&quot;
 confusionMatrix(a1)
-## Loading required package: class
-## Confusion Matrix and Statistics
+</code></pre>
+
+<pre><code>## Confusion Matrix and Statistics
 ## 
 ##    
 ##       A   B   C   D   E
@@ -60,10 +68,10 @@ confusionMatrix(a1)
 ##                Accuracy : 0.73          
 ##                  95% CI : (0.715, 0.743)
 ##     No Information Rate : 0.278         
-##     P-Value [Acc > NIR] : <2e-16        
+##     P-Value [Acc &gt; NIR] : &lt;2e-16        
 ##                                         
 ##                   Kappa : 0.659         
-##  Mcnemar's Test P-Value : <2e-16        
+##  Mcnemar&#39;s Test P-Value : &lt;2e-16        
 ## 
 ## Statistics by Class:
 ## 
@@ -76,9 +84,13 @@ confusionMatrix(a1)
 ## Detection Rate          0.239    0.128    0.121    0.110    0.132
 ## Detection Prevalence    0.285    0.185    0.174    0.163    0.194
 ## Balanced Accuracy       0.899    0.746    0.848    0.768    0.892
-# Classification matrix for "C5.0 model"
+</code></pre>
+
+<pre><code class="r"># Classification matrix for &quot;C5.0 model&quot;
 confusionMatrix(a2)
-## Confusion Matrix and Statistics
+</code></pre>
+
+<pre><code>## Confusion Matrix and Statistics
 ## 
 ##    
 ##        A    B    C    D    E
@@ -93,10 +105,10 @@ confusionMatrix(a2)
 ##                Accuracy : 0.984        
 ##                  95% CI : (0.98, 0.988)
 ##     No Information Rate : 0.285        
-##     P-Value [Acc > NIR] : <2e-16       
+##     P-Value [Acc &gt; NIR] : &lt;2e-16       
 ##                                        
 ##                   Kappa : 0.98         
-##  Mcnemar's Test P-Value : NA           
+##  Mcnemar&#39;s Test P-Value : NA           
 ## 
 ## Statistics by Class:
 ## 
@@ -109,9 +121,13 @@ confusionMatrix(a2)
 ## Detection Rate          0.283    0.180    0.171    0.159    0.190
 ## Detection Prevalence    0.285    0.185    0.174    0.163    0.194
 ## Balanced Accuracy       0.996    0.990    0.980    0.985    0.995
-# Classification matrix for "C4.5 model"
+</code></pre>
+
+<pre><code class="r"># Classification matrix for &quot;C4.5 model&quot;
 confusionMatrix(a3)
-## Confusion Matrix and Statistics
+</code></pre>
+
+<pre><code>## Confusion Matrix and Statistics
 ## 
 ##    
 ##        A    B    C    D    E
@@ -126,10 +142,10 @@ confusionMatrix(a3)
 ##                Accuracy : 0.98          
 ##                  95% CI : (0.975, 0.984)
 ##     No Information Rate : 0.283         
-##     P-Value [Acc > NIR] : <2e-16        
+##     P-Value [Acc &gt; NIR] : &lt;2e-16        
 ##                                         
 ##                   Kappa : 0.975         
-##  Mcnemar's Test P-Value : 0.204         
+##  Mcnemar&#39;s Test P-Value : 0.204         
 ## 
 ## Statistics by Class:
 ## 
@@ -142,15 +158,19 @@ confusionMatrix(a3)
 ## Detection Rate          0.281    0.180    0.168    0.160    0.191
 ## Detection Prevalence    0.285    0.185    0.174    0.163    0.194
 ## Balanced Accuracy       0.995    0.978    0.982    0.986    0.993
-From the above information it is evident that “C5.0 model” gives the best results of accuracy,sensitivity,Pos Pred Value, neg Pred Value and specificity.
+</code></pre>
 
-So, we can apply tree model, “C5.0” on the evaluation data set.
+<p>From the above information it is evident that &ldquo;C5.0 model&rdquo; gives the best results of accuracy,sensitivity,Pos Pred Value, neg Pred Value and specificity.</p>
 
-# C5.0 :
-a1<-table(evaluation$classe, predict(dtC50, newdata=evaluation, type="class"))
-rceval_c50<-sum(diag(a1))/sum(a1)*100
+<p>So, we can apply tree model, &ldquo;C5.0&rdquo; on the evaluation data set.</p>
+
+<pre><code class="r"># C5.0 :
+a1&lt;-table(evaluation$classe, predict(dtC50, newdata=evaluation, type=&quot;class&quot;))
+rceval_c50&lt;-sum(diag(a1))/sum(a1)*100
 confusionMatrix(a1)
-## Confusion Matrix and Statistics
+</code></pre>
+
+<pre><code>## Confusion Matrix and Statistics
 ## 
 ##    
 ##        A    B    C    D    E
@@ -165,10 +185,10 @@ confusionMatrix(a1)
 ##                Accuracy : 0.982         
 ##                  95% CI : (0.978, 0.986)
 ##     No Information Rate : 0.286         
-##     P-Value [Acc > NIR] : <2e-16        
+##     P-Value [Acc &gt; NIR] : &lt;2e-16        
 ##                                         
 ##                   Kappa : 0.978         
-##  Mcnemar's Test P-Value : NA            
+##  Mcnemar&#39;s Test P-Value : NA            
 ## 
 ## Statistics by Class:
 ## 
@@ -181,21 +201,39 @@ confusionMatrix(a1)
 ## Detection Rate          0.284    0.192    0.168    0.155    0.183
 ## Detection Prevalence    0.286    0.198    0.171    0.159    0.187
 ## Balanced Accuracy       0.995    0.987    0.980    0.986    0.993
-cat("Sensitivity in evaluation data using c5.0:", rceval_c50,"%" )
-## Sensitivity in evaluation data using c5.0: 98.24 %
-As we have seen above that tree model “C5.0” gives good results on the evaluation data we can apply the model on 20 new observations, which would predict the type of exercise performed by the people.
+</code></pre>
 
-The same preprocessing steps are applied on these 20 new observations, let’s say it as Realtest data.
+<pre><code class="r">cat(&quot;Sensitivity in evaluation data using c5.0:&quot;, rceval_c50,&quot;%&quot; )
+</code></pre>
 
-# Preprocessing on testing data :
-Realtest <- read.csv("pml-testing.csv",header=T,sep=",",na.string=c("NA",""))
-NAs <- apply(Realtest,2,function(x) {sum(is.na(x))})
-Realtest <- Realtest[,which(NAs == 0)]
-Realtest <- Realtest[,-c(1:6)]
+<pre><code>## Sensitivity in evaluation data using c5.0: 98.24 %
+</code></pre>
+
+<p>As we have seen above that tree model &ldquo;C5.0&rdquo; gives good results on the evaluation data we can apply the model on 20 new observations, which would predict the type of exercise performed by the people. </p>
+
+<p>The same preprocessing steps are applied on these 20 new observations, let&#39;s say it as Realtest data.</p>
+
+<pre><code class="r"># Preprocessing on testing data :
+Realtest &lt;- read.csv(&quot;pml-testing.csv&quot;,header=T,sep=&quot;,&quot;,na.string=c(&quot;NA&quot;,&quot;&quot;))
+NAs &lt;- apply(Realtest,2,function(x) {sum(is.na(x))})
+Realtest &lt;- Realtest[,which(NAs == 0)]
+Realtest &lt;- Realtest[,-c(1:6)]
 sum(is.na(Realtest))
-## [1] 0
-# testing our models on test data:
+</code></pre>
+
+<pre><code>## [1] 0
+</code></pre>
+
+<pre><code class="r"># testing our models on test data:
 # C5.0 :
-predict(dtC50, newdata=Realtest, type="class")
-##  [1] B A B A A E D B A A B C B A E E A B B B
+predict(dtC50, newdata=Realtest, type=&quot;class&quot;)
+</code></pre>
+
+<pre><code>##  [1] B A B A A E D B A A B C B A E E A B B B
 ## Levels: A B C D E
+</code></pre>
+
+</body>
+
+</html>
+
